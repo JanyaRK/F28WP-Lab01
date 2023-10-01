@@ -2,8 +2,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Fjalla One', sans-serif;
     color: #505050;
+    background: radial-gradient(coral, beige);
+
 }
 
 /* Header Styles */
@@ -103,8 +104,8 @@ main h3 {
 }
 
 .service-column {
-    flex-basis: calc(25% - 20px);
-    max-width: calc(25% - 20px);
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,7 +113,7 @@ main h3 {
 }
 
 .service-column img {
-    width: 180px;
+    width: 250px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -146,6 +147,7 @@ main h3 {
     margin-right: 20px;
     margin-left: 20px;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .cta-button {
@@ -153,7 +155,8 @@ main h3 {
     padding: 15px 25px;
     background-color: rgb(201, 200, 76);
     color: #ffffff;
-    text-decoration: none;
+    text-decoration: underline;
+    text-transform: uppercase;
     border-radius: 5px;
     font-weight: bold;
     font-size: 30px;
