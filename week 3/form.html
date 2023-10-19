@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+</head>
+<body>
+    
+</body>
+
+<body>
+
+    <h1>User Registration</h1>
+
+    <form id="registrationform"  action="/"> 
+        <div>
+            <!--field for username-->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div>
+            <!--field for Email-->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <div class="error" id="emailError"></div>
+        </div>
+        <div>
+            <!--field for password-->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <div class="error" id="passwordError"></div>
+        </div>
+        <div>
+            <!--field for confirm password-->
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+
+        
+            //Get the form element
+            const form= document.getElementById('registrationform');
+            //Event lister for the form on submit event.
+            form.addEventListener('submit',event =>{
+                event.preventDefault();
+                validateForm()
+                });
+
+                const setError = (element,message)=>{
+                const inputControl = element.parentElement;
+                const errorDisplay = inputControl.querySelector('.error');
+
+                errorDisplay.innerText=message;
+                inputControl.classList.add('error');
+                inputControl.classList.remove('success');
+            }
+            const setSuccess = (element) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = '';
+            inputControl.classList.remove('error');
+            inputControl.classList.add('success');
+            }
+
+
+            const validateForm=()=>{
+            let isValid=true;
+            // Username validation
+                    let usernameV = document.getElementById("username").value;
+                    if (usernameV.trim() === "") {
+                        isValid=false;
+                        setError(username,"Username is required")
+                    } else {
+                setSuccess(username);
+                    
+                
+           // Email validation
+            
+            let emailV = document.getElementById("email").value;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailV)) {
+                isValid=false;
+                setError(email,"Invalid email address")
+            } else {
+                setSuccess(email);
+               
+            }
+
+            // Password validation
+            let passwordV = document.getElementById("password").value;
+            if (passwordV.length < 8) {
+                isValid=false;
+                setError(password,"Password must be at least 8 characters")
+            } else {
+                setSuccess(password)
+            }
+            
+
+            // Confirm Password validation
+
+            let confirmPasswordV = document.getElementById("confirmPassword").value;
+            if (confirmPasswordV !== passwordV) {
+                isValid=false;
+                setError(confirmPassword,"Passwords do not match")
+            } else {
+                setSuccess(confirmPassword)
+            }
+        }
+    
+    
+    
+
+            if (!isValid){
+                event.preventDefault();
+            } else{
+                alert("Form submitted!")
+            }
+
+        }
+        
+    </script>
+
+</body>
+</html>
+
+<style>
+/* Style for the form: setting width, auto margin for centering, padding,
+background color, border radius for rounded corners, and font size */
+#registrationform {
+width: 300px;
+margin: 20vh auto 0 auto; /* This centers the form vertically and
+horizontally */
+padding: 20px;
+background-color: whitesmoke; /* Light gray background for the form */
+border-radius: 4px; /* Rounded corners for the form */
+font-size: 12px;
+}
+/* Style for the form's heading: setting the text color and alignment */
+#form h1 {
+color: #0f2027; /* Dark text color for the heading */
+text-align: center; /* Center-align the heading */
+}
+/* Style for the form's button: padding, top margin, full width, text color,
+background color, no border, and rounded corners */
+#form button {
+padding: 10px;
+margin-top: 10px; /* Space above the button */
+width: 100%; /* Make the button expand the full width of the form */
+color: white; /* White text color for the button */
+background-color: rgb(41, 57, 194); /* Blue background color for the button
+*/
+border: none; /* Remove the default border */
+border-radius: 4px; /* Rounded corners for the button */
+}
+/* Container for input fields: using flexbox for layout, column direction */
+.input-control {
+display: flex;
+flex-direction: column; /* Stack the children (label, input, error message)
+vertically */
+}
+/* Style for input fields inside the container: border style, rounded corners,
+block-level display, font size, padding, full width */
+.inputControl input {
+border: 2px solid #f0f0f0; /* Light gray border for the inputs */
+border-radius: 4px; /* Rounded corners for the inputs */
+display: block; /* Display input field as a block */
+font-size: 12px; /* Text size within the input field */
+padding: 10px; /* Space inside the input field */
+width: 100%; /* Input field takes up 100% of the form's width */
+}
+/* Remove focus outline from input fields */
+.inputControl input:focus {
+outline: 0; /* Remove outline when input is focused */
+}
+/* Style for input fields with class "success": green border */
+.inputControl.success input {
+border-color: #09c372; /* Green border to indicate successful input */
+}
+/* Style for input fields with class "error": red border */
+.input-control.error input {
+border-color: #ff3860; /* Red border to indicate an error in input */
+}
+/* Style for the error message: text color, font size, and height */
+.inputControl .error {
+color: #ff3860; /* Red text color for error messages */
+font-size: 9px; /* Smaller font size for error messages */
+height: 13px; /* Explicit height to ensure consistent spacing */
+}
+
+</style>
