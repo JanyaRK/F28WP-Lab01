@@ -87,7 +87,10 @@
             if (!emailPattern.test(emailV)) {
                 isValid=false;
                 setError(email,"Invalid email address")
-            } else {
+            } else if (emailV.trim() === "") {
+                        isValid=false;
+                    setError(confirmPassword,"Please fill this field")}
+             else {
                 setSuccess(email);
                
             }
@@ -97,7 +100,10 @@
             if (passwordV.length < 8) {
                 isValid=false;
                 setError(password,"Password must be at least 8 characters")
-            } else {
+            } else if (passwordV.trim() === "") {
+                        isValid=false;
+                    setError(confirmPassword,"Please fill this field")}
+            else {
                 setSuccess(password)
             }
             
@@ -108,6 +114,11 @@
             if (confirmPasswordV !== passwordV) {
                 isValid=false;
                 setError(confirmPassword,"Passwords do not match")
+            }
+            else if (confirmPasswordV.trim() === "") {
+                        isValid=false;
+                    setError(confirmPassword,"Please fill this field")
+
             } else {
                 setSuccess(confirmPassword)
             }
@@ -172,11 +183,12 @@ border-radius: 4px; /* Rounded corners for the inputs */
 display: block; /* Display input field as a block */
 font-size: 12px; /* Text size within the input field */
 padding: 10px; /* Space inside the input field */
-width: 100%; /* Input field takes up 100% of the form's width */
+width: 90%; /* Input field takes up 90% of the form's width */
 }
 /* Remove focus outline from input fields */
 .input-control input:focus {
-outline: 0; /* Remove outline when input is focused */
+outline: 0; 
+background-color: rgb(128, 149, 156)/* Remove outline when input is focused */
 }
 /* Style for input fields with class "success": green border */
 .input-control.success input {
