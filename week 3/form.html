@@ -77,7 +77,8 @@
                         isValid=false;
                         setError(username,"Username is required")
                     } else {
-                setSuccess(username);
+                    setSuccess(username);
+                    }
                     
                 
            // Email validation
@@ -87,9 +88,7 @@
             if (!emailPattern.test(emailV)) {
                 isValid=false;
                 setError(email,"Invalid email address")
-            } else if (emailV.trim() === "") {
-                        isValid=false;
-                    setError(confirmPassword,"Please fill this field")}
+            } 
              else {
                 setSuccess(email);
                
@@ -100,14 +99,11 @@
             if (passwordV.length < 8) {
                 isValid=false;
                 setError(password,"Password must be at least 8 characters")
-            } else if (passwordV.trim() === "") {
-                        isValid=false;
-                    setError(confirmPassword,"Please fill this field")}
+            }
             else {
                 setSuccess(password)
             }
             
-
             // Confirm Password validation
 
             let confirmPasswordV = document.getElementById("confirmPassword").value;
@@ -133,7 +129,7 @@
                 alert("Form submitted!")
             }
 
-        }
+        
         
     </script>
 
@@ -188,7 +184,7 @@ width: 90%; /* Input field takes up 90% of the form's width */
 /* Remove focus outline from input fields */
 .input-control input:focus {
 outline: 0; 
-background-color: rgb(128, 149, 156)/* Remove outline when input is focused */
+background-color: rgb(160, 201, 215)/* Remove outline when input is focused */
 }
 /* Style for input fields with class "success": green border */
 .input-control.success input {
