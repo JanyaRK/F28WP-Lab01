@@ -51,6 +51,7 @@
                 event.preventDefault();
                 validateForm()
                 });
+            //function to display error message and apply error styles
 
                 const setError = (element,message)=>{
                 const inputControl = element.parentElement;
@@ -60,6 +61,8 @@
                 inputControl.classList.add('error');
                 inputControl.classList.remove('success');
             }
+            //function to indicate success by removing error message and applying success styles
+        
             const setSuccess = (element) => {
             const inputControl = element.parentElement;
             const errorDisplay = inputControl.querySelector('.error');
@@ -67,17 +70,17 @@
             inputControl.classList.remove('error');
             inputControl.classList.add('success');
             }
-
-
+            
+            //main function to validate inputs
             const validateForm=()=>{
             let isValid=true;
             // Username validation
                     let usernameV = document.getElementById("username").value;
-                    if (usernameV.trim() === "") {
+                    if (usernameV.trim() === "") {//checks if the the no username is entered
                         isValid=false;
-                        setError(username,"Username is required")
+                        setError(username,"Username is required")//calls fucntion to set error message.
                     } else {
-                    setSuccess(username);
+                    setSuccess(username);//calls fucntion to set success message.
                     }
                     
                 
@@ -85,7 +88,7 @@
             
             let emailV = document.getElementById("email").value;
             let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(emailV)) {
+            if (!emailPattern.test(emailV)) {//checks if the entered email matches the string pattern
                 isValid=false;
                 setError(email,"Invalid email address")
             } 
@@ -96,7 +99,7 @@
 
             // Password validation
             let passwordV = document.getElementById("password").value;
-            if (passwordV.length < 8) {
+            if (passwordV.length < 8) {//checks if the password has less than 8 characters
                 isValid=false;
                 setError(password,"Password must be at least 8 characters")
             }
@@ -107,26 +110,25 @@
             // Confirm Password validation
 
             let confirmPasswordV = document.getElementById("confirmPassword").value;
-            if (confirmPasswordV !== passwordV) {
+            if (confirmPasswordV !== passwordV) {//checks if the entered password does not match password entered in password field
                 isValid=false;
                 setError(confirmPassword,"Passwords do not match")
             }
-            else if (confirmPasswordV.trim() === "") {
+            else if (confirmPasswordV.trim() === "") {//checks if no input in entered
                         isValid=false;
                     setError(confirmPassword,"Please fill this field")
 
             } else {
                 setSuccess(confirmPassword)
             }
-        }
-    
-    
+        
     
 
-            if (!isValid){
-                event.preventDefault();
-            } else{
-                alert("Form submitted!")
+        if (!isValid){
+            event.preventDefault();
+        } else{
+            alert("Form submitted!")
+        }
             }
 
         
