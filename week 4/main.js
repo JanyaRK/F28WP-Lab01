@@ -1,5 +1,5 @@
 var ourRequest = new XMLHttpRequest();
-ourRequest.open('GET', 'https://your-github-username.github.io/your-repositoryname/cities1.json');
+ourRequest.open('GET', 'https://janyark.github.io/F28WP-Lab01/week4/cities1.json');
 ourRequest.onload = function() {
 var ourData = JSON.parse(ourRequest.responseText);
 console.log(ourData[0]);
